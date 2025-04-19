@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acme Loan Portal And Status Check</title>
+</head>
+<body>
+    <h1>Acme Loan Portal And Status Check</h1>
+
+    <!-- Form to accept a user's application -->
+    <div id="acceptApplication">
+        <h2>1) Submit Application</h2>
+        <input type="text" id="applicantName" placeholder="Enter Your Name" required>
+        <input type="text" id="zipCode" placeholder="Enter Your Zip Code" required>
+        <button type="button" onclick="acceptApplication()">Submit Application</button>
+        <div id="confirmationMessage"></div>
+    </div>
+
+    <!-- Use to check status of an application -->
+    <div id="checkStatus">
+        <h2>2) Check Application Status</h2>
+        <input type="text" id="checkAppNumber" placeholder="Enter Application Number">
+        <button type="button" onclick="checkStatus()">Check Status</button>
+        <div id="statusMessage"></div>
+    </div>
+
+    <!-- Use to change status of an application by admin-->
+    <div id="changeStatus">
+        <h2>3) Change Application Status (For Admin Use Only)</h2>
+        <input type="text" id="changeAppNumber" placeholder="Enter Application Number">
+
+        <!-- Four status to choose from -->
+        <div>
+            <button type="button" onclick="updateStatus(1)">Received</button>
+            <button type="button" onclick="updateStatus(2)">Processing</button>
+            <button type="button" onclick="updateStatus(3)">Accepted</button>
+            <button type="button" onclick="updateStatus(4)">Rejected</button>
+        </div>
+        
+        <div id="changeStatusMessage"></div>
+    </div>
+
+    <!-- Linking to external JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

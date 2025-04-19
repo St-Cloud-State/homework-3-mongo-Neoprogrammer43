@@ -1,0 +1,33 @@
+Script started on 2025-04-19 12:01:24+00:00 [TERM="xterm-256color" TTY="/dev/pts/8" COLUMNS="142" LINES="14"]
+[0;32m@Neoprogrammer43 [0m➜ [1;34m/workspaces/homework-3-mongo-Neoprogrammer43 [0;36m([1;31mmain[0;36m) [0m$ cd homework3Pa[K[Kpart1
+[0;32m@Neoprogrammer43 [0m➜ [1;34m/workspaces/homework-3-mongo-Neoprogrammer43/homework3part1 [0;36m([1;31mmain[0;36m) [0m$ mongod --dbpath ./data/db
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten] MongoDB starting : pid=144349 port=27017 dbpath=./data/db 64-bit host=codespaces-16c268
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten] db version v3.6.8
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten] git version: 8e540c0b6db93ce994cc548f000900bdc740f80a
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.1.1f  31 Mar 2020
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten] modules: none
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten] build environment:
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2025-04-19T12:01:45.573+0000 I CONTROL  [initandlisten] options: { storage: { dbPath: "./data/db" } }
+2025-04-19T12:01:45.573+0000 I -        [initandlisten] Detected data files in ./data/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2025-04-19T12:01:45.573+0000 I STORAGE  [initandlisten] 
+2025-04-19T12:01:45.573+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2025-04-19T12:01:45.573+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2025-04-19T12:01:45.573+0000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3457M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),cache_cursors=false,compatibility=(release="3.0",require_max="3.0"),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),statistics_log=(wait=0),verbose=(recovery_progress),
+2025-04-19T12:01:45.855+0000 I STORAGE  [initandlisten] WiredTiger message [1745064105:855115][144349:0x7c34cbd36ac0], txn-recover: Main recovery loop: starting at 8/6528
+2025-04-19T12:01:45.905+0000 I STORAGE  [initandlisten] WiredTiger message [1745064105:905221][144349:0x7c34cbd36ac0], txn-recover: Recovering log 8 through 9
+2025-04-19T12:01:45.944+0000 I STORAGE  [initandlisten] WiredTiger message [1745064105:944338][144349:0x7c34cbd36ac0], txn-recover: Recovering log 9 through 9
+2025-04-19T12:01:45.968+0000 I STORAGE  [initandlisten] WiredTiger message [1745064105:968527][144349:0x7c34cbd36ac0], txn-recover: Set global recovery timestamp: 0
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2025-04-19T12:01:45.988+0000 I CON

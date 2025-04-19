@@ -1,0 +1,339 @@
+Script started on 2025-04-19 12:02:02+00:00 [TERM="xterm-256color" TTY="/dev/pts/10" COLUMNS="125" LINES="14"]
+[0;32m@Neoprogrammer43 [0m➜ [1;34m/workspaces/homework-3-mongo-Neoprogrammer43/homework3part1 [0;36m([1;31mmain[0;36m) [0m$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("e265e0ed-9363-4b11-8a3d-29e81284a618") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2025-04-19T12:01:45.573+0000 I STORAGE  [initandlisten] 
+2025-04-19T12:01:45.573+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2025-04-19T12:01:45.573+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] 
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2025-04-19T12:01:45.988+0000 I CONTROL  [initandlisten] 
+> show databases[3G[Jshow databases[17G
+admin       0.000GB
+config      0.000GB
+loanPortal  0.000GB
+local       0.000GB
+> use[3G[Jus[5Ge loanPortal[3G[Juse loanPortal[17G
+switched to db loanPortal
+> show collections[3G[Jshow collections[19G
+applications
+> db.applications.find()[3G[Jdb.applications.find()[25G
+> db.applications.insertOne({[3G[Jdb.applications.insertOne({[30G
+... "appNumber": 1,[5G[J"appNumber": 1,[20G
+... "name": "John Doe",[5G[J"name": "John Doe",[24G
+... "address": {[5G[J"address": {[17G
+...     "street": "123 Main St",[5G[J    "street": "123 Main St",[33G
+...     "city": "Anytown",[5G[J    "city": "Anytown",[27G
+...     "zipCode": "12345"[5G[J    "zipCode": "12345"[27G
+... },[5G[J},[7G
+... "status": "received",[5G[J"status": "received",[26G
+... "notes": [][5G[J"notes": [][16G
+... });[5G[J});[8G
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("680390ed8ff0b96376ea9a10")
+}
+> db.applications.find({ "appNumber": 1 }).pretty();[3G[Jdb.applications.find({ "appNumber": 1 }).pretty();[53G
+{
+	"_id" : ObjectId("680390ed8ff0b96376ea9a10"),
+	"appNumber" : 1,
+	"name" : "John Doe",
+	"address" : {
+		"street" : "123 Main St",
+		"city" : "Anytown",
+		"zipCode" : "12345"
+	},
+	"status" : "received",
+	"notes" : [ ]
+}
+> db.applications.updateOne([3G[Jdb.applications.updateOne([29G
+... { "appNumber": 1 },[5G[J{ "appNumber": 1 },[24G
+... {[5G[J{[6G
+...     $push: {[5G[J    $push: {[17G
+...         "notes": {[5G[J        "notes": {[23G
+...             "phase": "personal details checking",[5G[J            "phase": "personal details checking",[54G
+...             "tasks": [[5G[J            "tasks": [[27G
+...                 { "task": "Verify address", "status": "Completed", "message": "Address verified." },[5G[J                { "task": "Verify address", "status": "Completed", "message": "Address verified." },[105G
+... { "task": "Verify name", "status": "Completed", "message": "Name verified." },[5G[J{ "task": "Verify name", "status": "Completed", "message": "Name verified." },[83G
+...                 { "task": "Verify ID", "status": "Pending", "message": "Waiting for ID verification." },[5G[J                { "task": "Verify ID", "status": "Pending", "message": "Waiting for ID verification." },[109G
+...                        { "task": "Verify credit", "status": "Pending", "message": "Waiting for Credit verification." },[5G[J                       { "task": "Verify credit", "status": "Pending", "message": "Waiting for Credit verification." },[124G
+... { "task": "Verify certification", "status": "Pending", "message": "Waiting for certification." }[5G[J{ "task": "Verify certification", "status": "Pending", "message": "Waiting for certification." }[101G
+...             ][5G[J            ][18G
+...         }[5G[J        }[14G
+...     }[5G[J    }[10G
+... }[5G[J}[6G
+... );[5G[J);[7G
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.applications.find({ "appNumber": 1 }).pretty();[3G[Jdb.applications.find({ "appNumber": 1 }).pretty();[53G
+{
+	"_id" : ObjectId("680390ed8ff0b96376ea9a10"),
+	"appNumber" : 1,
+	"name" : "John Doe",
+	"address" : {
+		"street" : "123 Main St",
+		"city" : "Anytown",
+		"zipCode" : "12345"
+	},
+	"status" : "received",
+	"notes" : [
+		{
+			"phase" : "personal details checking",
+			"tasks" : [
+				{
+					"task" : "Verify address",
+					"status" : "Completed",
+					"message" : "Address verified."
+				},
+				{
+					"task" : "Verify name",
+					"status" : "Completed",
+					"message" : "Name verified."
+				},
+				{
+					"task" : "Verify ID",
+					"status" : "Pending",
+					"message" : "Waiting for ID verification."
+				},
+				{
+					"task" : "Verify credit",
+					"status" : "Pending",
+					"message" : "Waiting for Credit verification."
+				},
+				{
+					"task" : "Verify certification",
+					"status" : "Pending",
+					"message" : "Waiting for certification."
+				}
+			]
+		}
+	]
+}
+> db.applications.updateOne([3G[Jdb.applications.updateOne([29G
+... { "appNumber": 1, "notes.phase": "personal details checking", "notes.tasks.task": "Verify credit" },[5G[J{ "appNumber": 1, "notes.phase": "personal details checking", "notes.tasks.task": "Verify credit" },[105G
+... {[5G[J{[6G
+...     $set: {[5G[J    $set: {[16G
+...         "notes.$.tasks.$[task].status": "Completed",[5G[J        "notes.$.tasks.$[task].status": "Completed",[57G
+...         "notes.$.tasks.$[task].message": "Credit verified"[5G[J        "notes.$.tasks.$[task].message": "Credit verified"[63G
+...     }[5G[J    }[10G
+... },[5G[J},[7G
+... {[5G[J{[6G
+...     arrayFilters: [{ "task.task": "Verify credit" }][5G[J    arrayFilters: [{ "task.task": "Verify credit" }][57G
+... }[5G[J}[6G
+... );[5G[J);[7G
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.applications.find({ "appNumber": 1 }).pretty();[3G[Jdb.applications.find({ "appNumber": 1 }).pretty();[53G
+{
+	"_id" : ObjectId("680390ed8ff0b96376ea9a10"),
+	"appNumber" : 1,
+	"name" : "John Doe",
+	"address" : {
+		"street" : "123 Main St",
+		"city" : "Anytown",
+		"zipCode" : "12345"
+	},
+	"status" : "received",
+	"notes" : [
+		{
+			"phase" : "personal details checking",
+			"tasks" : [
+				{
+					"task" : "Verify address",
+					"status" : "Completed",
+					"message" : "Address verified."
+				},
+				{
+					"task" : "Verify name",
+					"status" : "Completed",
+					"message" : "Name verified."
+				},
+				{
+					"task" : "Verify ID",
+					"status" : "Pending",
+					"message" : "Waiting for ID verification."
+				},
+				{
+					"task" : "Verify credit",
+					"status" : "Completed",
+					"message" : "Credit verified"
+				},
+				{
+					"task" : "Verify certification",
+					"status" : "Pending",
+					"message" : "Waiting for certification."
+				}
+			]
+		}
+	]
+}
+> db.applications.insertOne({[3G[Jdb.applications.insertOne({[30G
+... "appNumber": 2,[5G[J"appNumber": 2,[20G
+... "name": "Anthony King",[5G[J"name": "Anthony King",[28G
+... "address": {[5G[J"address": {[17G
+...     "street": "456 Big St",[5G[J    "street": "456 Big St",[32G
+...     "city": "Supertown",[5G[J    "city": "Supertown",[29G
+...     "zipCode": "67890"[5G[J    "zipCode": "67890"[27G
+... },[5G[J},[7G
+... "status": "received",[5G[J"status": "received",[26G
+... "notes": [][5G[J"notes": [][16G
+... });[5G[J});[8G
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("680391718ff0b96376ea9a11")
+}
+> db.applications.find({ "appNumber": 2 }).pretty();[3G[Jdb.applications.find({ "appNumber": 2 }).pretty();[53G
+{
+	"_id" : ObjectId("680391718ff0b96376ea9a11"),
+	"appNumber" : 2,
+	"name" : "Anthony King",
+	"address" : {
+		"street" : "456 Big St",
+		"city" : "Supertown",
+		"zipCode" : "67890"
+	},
+	"status" : "received",
+	"notes" : [ ]
+}
+> db.applications.updateOne([3G[Jdb.applications.updateOne([29G
+... { "appNumber": 2 },[5G[J{ "appNumber": 2 },[24G
+... {[5G[J{[6G
+...     $push: {[5G[J    $push: {[17G
+...         "notes": {[5G[J        "notes": {[23G
+...             "phase": "personal details checking",[5G[J            "phase": "personal details checking",[54G
+...             "tasks": [[5G[J            "tasks": [[27G
+...                 { "task": "Verify address", "status": "Completed", "message": "Address verified." },[5G[J                { "task": "Verify address", "status": "Completed", "message": "Address verified." },[105G
+... { "task": "Verify name", "status": "Completed", "message": "Name verified." },[5G[J{ "task": "Verify name", "status": "Completed", "message": "Name verified." },[83G
+...                 { "task": "Verify ID", "status": "Pending", "message": "Waiting for ID verification." },[5G[J                { "task": "Verify ID", "status": "Pending", "message": "Waiting for ID verification." },[109G
+...                        { "task": "Verify credit", "status": "Pending", "message": "Waiting for Credit verification." },[5G[J                       { "task": "Verify credit", "status": "Pending", "message": "Waiting for Credit verification." },[124G
+... { "task": "Verify certification", "status": "Pending", "message": "Waiting for certification." }[5G[J{ "task": "Verify certification", "status": "Pending", "message": "Waiting for certification." }[101G
+...             ][5G[J            ][18G
+...         }[5G[J        }[14G
+...     }[5G[J    }[10G
+... }[5G[J}[6G
+... );[5G[J);[7G
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.applications.find({ "appNumber": 2 }).pretty();[3G[Jdb.applications.find({ "appNumber": 2 }).pretty();[53G
+{
+	"_id" : ObjectId("680391718ff0b96376ea9a11"),
+	"appNumber" : 2,
+	"name" : "Anthony King",
+	"address" : {
+		"street" : "456 Big St",
+		"city" : "Supertown",
+		"zipCode" : "67890"
+	},
+	"status" : "received",
+	"notes" : [
+		{
+			"phase" : "personal details checking",
+			"tasks" : [
+				{
+					"task" : "Verify address",
+					"status" : "Completed",
+					"message" : "Address verified."
+				},
+				{
+					"task" : "Verify name",
+					"status" : "Completed",
+					"message" : "Name verified."
+				},
+				{
+					"task" : "Verify ID",
+					"status" : "Pending",
+					"message" : "Waiting for ID verification."
+				},
+				{
+					"task" : "Verify credit",
+					"status" : "Pending",
+					"message" : "Waiting for Credit verification."
+				},
+				{
+					"task" : "Verify certification",
+					"status" : "Pending",
+					"message" : "Waiting for certification."
+				}
+			]
+		}
+	]
+}
+> db.applications.updateOne([3G[Jdb.applications.updateOne([29G
+... { "appNumber": 2 },[5G[J{ "appNumber": 2 },[24G
+... {[5G[J{[6G
+...     $push: {[5G[J    $push: {[17G
+...         "notes": {[5G[J        "notes": {[23G
+...             "phase": "rejected",[5G[J            "phase": "rejected",[37G
+...             "message": "Application rejected due to low credit score.",[5G[J            "message": "Application rejected due to low credit score.",[76G
+...             "timestamp": new Date()[5G[J            "timestamp": new Date()[40G
+...         }[5G[J        }[14G
+...     }[5G[J    }[10G
+... }[5G[J}[6G
+... );[5G[J);[7G
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.applications.find({ "appNumber": 2 }).pretty();[3G[Jdb.applications.find({ "appNumber": 2 }).pretty();[53G
+{
+	"_id" : ObjectId("680391718ff0b96376ea9a11"),
+	"appNumber" : 2,
+	"name" : "Anthony King",
+	"address" : {
+		"street" : "456 Big St",
+		"city" : "Supertown",
+		"zipCode" : "67890"
+	},
+	"status" : "received",
+	"notes" : [
+		{
+			"phase" : "personal details checking",
+			"tasks" : [
+				{
+					"task" : "Verify address",
+					"status" : "Completed",
+					"message" : "Address verified."
+				},
+				{
+					"task" : "Verify name",
+					"status" : "Completed",
+					"message" : "Name verified."
+				},
+				{
+					"task" : "Verify ID",
+					"status" : "Pending",
+					"message" : "Waiting for ID verification."
+				},
+				{
+					"task" : "Verify credit",
+					"status" : "Pending",
+					"message" : "Waiting for Credit verification."
+				},
+				{
+					"task" : "Verify certification",
+					"status" : "Pending",
+					"message" : "Waiting for certification."
+				}
+			]
+		},
+		{
+			"phase" : "rejected",
+			"message" : "Application rejected due to low credit score.",
+			"timestamp" : ISODate("2025-04-19T12:05:49.796Z")
+		}
+	]
+}
+> 
+bye
+[0;32m@Neoprogrammer43 [0m➜ [1;34m/workspaces/homework-3-mongo-Neoprogrammer43/homework3part1 [0;36m([1;31mmain[0;36m) [0m$ exit
+
+Script done on 2025-04-19 12:06:43+00:00 [COMMAND_EXIT_CODE="0"]
