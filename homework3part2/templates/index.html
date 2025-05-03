@@ -54,16 +54,36 @@
       <div id="note1Message"></div>
     </div>
 
-    <!-- Row 2: Processing Subphase Notes -->
-    <div class="note-row">
-      <h3>2. Processing Subphase Notes</h3>
-      <input type="text" id="note2AppNumber" placeholder="Application Number">
-      <input type="text" id="note2Personal"  placeholder="Personal Details Checking">
-      <input type="text" id="note2Credit"    placeholder="Credit Checking">
-      <input type="text" id="note2Cert"      placeholder="Certification Checking">
-      <button type="button" onclick="addProcessingNotes()">Add Notes</button>
-      <div id="note2Message"></div>
-    </div>
+<!-- Row 2: Processing Subphase Task Statuses -->
+<div class="note-row">
+  <h3>2. Processing Subphase Task Statuses</h3>
+  <input type="text" id="note2AppNumber" placeholder="Application Number">
+
+  <fieldset>
+    <legend>Personal Details Checking</legend>
+    <input type="text" id="note2PersonalID"          placeholder="ID check status">
+    <input type="text" id="note2PersonalAddress"     placeholder="Address check status">
+    <input type="text" id="note2PersonalBackground"  placeholder="Background check status">
+  </fieldset>
+
+  <fieldset>
+    <legend>Credit Checking</legend>
+    <input type="text" id="note2CreditSSN"        placeholder="Verify SSN status">
+    <input type="text" id="note2CreditBureau"     placeholder="Bureau communication status">
+    <input type="text" id="note2CreditScore"      placeholder="Final credit score status">
+  </fieldset>
+
+  <fieldset>
+    <legend>Certification Checking</legend>
+    <input type="text" id="note2CertIdentify"      placeholder="Identify certifications status">
+    <input type="text" id="note2CertCommunicate"   placeholder="Records communication status">
+    <input type="text" id="note2CertStatus"        placeholder="Final certification status">
+  </fieldset>
+
+  <button type="button" onclick="addProcessingNotes()">Add Notes</button>
+  <div id="note2Message"></div>
+</div>
+
 
  <!-- Row 3: Accepted Note -->
 <div class="note-row">

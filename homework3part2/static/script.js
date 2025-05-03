@@ -76,54 +76,53 @@ function acceptApplication() {
   // 4.2) Processing Subphase Notes
   function addProcessingNotes() {
     const appNumber = parseInt(document.getElementById('note2AppNumber').value, 10);
-    const personal  = document.getElementById('note2Personal').value;
-    const credit    = document.getElementById('note2Credit').value;
-    const certification = document.getElementById('note2Cert').value;
   
-    const calls = [];
-    if (personal) {
-      calls.push(fetch('/api/add_note', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({
-          appNumber,
-          phase: 'processing',
-          subphase: 'personal_details',
-          message: personal
+    // define each task under its subphase
+    const tasks = [
+      { subphase: 'personal_details',    label: 'ID check',                    value: document.getElementById('note2PersonalID').value },
+      { subphase: 'personal_details',    label: 'Address check',               value: document.getElementById('note2PersonalAddress').value },
+      { subphase: 'personal_details',    label: 'Background check',            value: document.getElementById('note2PersonalBackground').value },
+  
+      { subphase: 'credit',              label: 'Verify SSN',                  value: document.getElementById('note2CreditSSN').value },
+      { subphase: 'credit',              label: 'Bureau communication',        value: document.getElementById('note2CreditBureau').value },
+      { subphase: 'credit',              label: 'Final credit score',          value: document.getElementById('note2CreditScore').value },
+  
+      { subphase: 'certification',       label: 'Identify certifications',     value: document.getElementById('note2CertIdentify').value },
+      { subphase: 'certification',       label: 'Records communication',       value: document.getElementById('note2CertCommunicate').value },
+      { subphase: 'certification',       label: 'Final certification status',  value: document.getElementById('note2CertStatus').value }
+    ];
+  
+    // make one call per non-empty status
+    const calls = tasks
+      .filter(t => t.value)
+      .map(t =>
+        fetch('/api/add_note', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            appNumber,
+            phase: 'processing',
+            subphase: t.subphase,
+            message: `${t.label}: ${t.value}`
+          })
         })
-      }));
-    }
-    if (credit) {
-      calls.push(fetch('/api/add_note', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({
-          appNumber,
-          phase: 'processing',
-          subphase: 'credit',
-          message: credit
-        })
-      }));
-    }
-    if (certification) {
-      calls.push(fetch('/api/add_note', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({
-          appNumber,
-          phase: 'processing',
-          subphase: 'certification',
-          message: certification
-        })
-      }));
+      );
+  
+    if (calls.length === 0) {
+      document.getElementById('note2Message').innerText = 'No statuses entered.';
+      return;
     }
   
     Promise.all(calls)
       .then(() => {
-        document.getElementById('note2Message').innerText = 'Processing notes added.';
+        document.getElementById('note2Message').innerText = 'Processing task statuses added.';
       })
-      .catch(err => console.error('Error adding processing notes:', err));
+      .catch(err => {
+        console.error('Error adding processing statuses:', err);
+        document.getElementById('note2Message').innerText = 'Error adding notes.';
+      });
   }
+  
   
   // 4.3) Accepted Note
   function addAcceptedNote() {
