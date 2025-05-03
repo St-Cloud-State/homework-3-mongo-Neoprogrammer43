@@ -127,13 +127,22 @@ function acceptApplication() {
   
   // 4.3) Accepted Note
   function addAcceptedNote() {
-    const appNumber = parseInt(document.getElementById('note3AppNumber').value, 10);
-    const message   = document.getElementById('note3Reason').value;
+    const appNumber    = parseInt(document.getElementById('note3AppNumber').value, 10);
+    const loanTerms    = document.getElementById('note3LoanTerms').value;
+    const interestRate = document.getElementById('note3InterestRate').value;
+    const endYear      = document.getElementById('note3EndYear').value;
+  
+    const message = 
+      `Loan terms: ${loanTerms}; Interest rate: ${interestRate}; End year: ${endYear}`;
   
     fetch('/api/add_note', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({appNumber, phase:'accepted', message})
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        appNumber,
+        phase: 'accepted',
+        message
+      })
     })
     .then(res => res.json())
     .then(data => {
@@ -141,6 +150,7 @@ function acceptApplication() {
     })
     .catch(err => console.error('Error adding accepted note:', err));
   }
+  
   
   // 4.4) Rejected Note
   function addRejectedNote() {
