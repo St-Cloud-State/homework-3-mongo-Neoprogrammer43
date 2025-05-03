@@ -1,0 +1,97 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Acme Loan Portal And Status Check</title>
+</head>
+<body>
+  <h1>Acme Loan Portal And Status Check</h1>
+
+<!-- templates/index.html -->
+
+<!-- 1) Submit Application -->
+<div id="acceptApplication">
+    <h2>1) Submit Application</h2>
+    <input type="text" id="applicantName" placeholder="Enter Your Name">
+    <input type="text" id="address"         placeholder="Enter Your Address">  <!-- ← changed -->
+    <button type="button" onclick="acceptApplication()">Submit Application</button>
+    <div id="confirmationMessage"></div>
+  </div>  
+
+  <!-- 2) Check Application Status -->
+  <div id="checkStatus">
+    <h2>2) Check Application Status</h2>
+    <input type="text" id="checkAppNumber" placeholder="Enter Application Number">
+    <button type="button" onclick="checkStatus()">Check Status</button>
+    <div id="statusMessage"></div>
+  </div>
+
+  <!-- 3) Change Application Status (Admin) -->
+  <div id="changeStatus">
+    <h2>3) Change Application Status (For Admin Use Only)</h2>
+    <input type="text" id="changeAppNumber" placeholder="Enter Application Number">
+    <div>
+      <button type="button" onclick="updateStatus(1)">Received</button>
+      <button type="button" onclick="updateStatus(2)">Processing</button>
+      <button type="button" onclick="updateStatus(3)">Accepted</button>
+      <button type="button" onclick="updateStatus(4)">Rejected</button>
+    </div>
+    <div id="changeStatusMessage"></div>
+  </div>
+
+  <!-- 4) Add Notes -->
+  <div id="addNotes">
+    <h2>4) Add Notes</h2>
+
+    <!-- Row 1: Initial Info Note -->
+    <div class="note-row">
+      <h3>1. Initial Info Note</h3>
+      <input type="text" id="note1AppNumber" placeholder="Application Number">
+      <input type="text" id="note1Name"      placeholder="Name">
+      <input type="text" id="note1ZipCode"   placeholder="Zip Code">
+      <button type="button" onclick="addInitialNote()">Add Note</button>
+      <div id="note1Message"></div>
+    </div>
+
+    <!-- Row 2: Processing Subphase Notes -->
+    <div class="note-row">
+      <h3>2. Processing Subphase Notes</h3>
+      <input type="text" id="note2AppNumber" placeholder="Application Number">
+      <input type="text" id="note2Personal"  placeholder="Personal Details Checking">
+      <input type="text" id="note2Credit"    placeholder="Credit Checking">
+      <input type="text" id="note2Cert"      placeholder="Certification Checking">
+      <button type="button" onclick="addProcessingNotes()">Add Notes</button>
+      <div id="note2Message"></div>
+    </div>
+
+    <!-- Row 3: Accepted Note -->
+    <div class="note-row">
+      <h3>3. Accepted Note</h3>
+      <input type="text" id="note3AppNumber" placeholder="Application Number">
+      <input type="text" id="note3Reason"    placeholder="Reason for Acceptance">
+      <button type="button" onclick="addAcceptedNote()">Add Note</button>
+      <div id="note3Message"></div>
+    </div>
+
+    <!-- Row 4: Rejected Note -->
+    <div class="note-row">
+      <h3>4. Rejected Note</h3>
+      <input type="text" id="note4AppNumber" placeholder="Application Number">
+      <input type="text" id="note4Reason"    placeholder="Reason for Rejection">
+      <button type="button" onclick="addRejectedNote()">Add Note</button>
+      <div id="note4Message"></div>
+    </div>
+
+    <!-- Row 5: View All Notes -->
+    <div class="note-row">
+      <h3>5. View All Notes</h3>
+      <input type="text" id="note5AppNumber" placeholder="Application Number">
+      <button type="button" onclick="viewAllNotes()">View Notes</button>
+      <div id="note5Output"></div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
